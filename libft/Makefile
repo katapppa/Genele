@@ -26,7 +26,7 @@ SRC = ft_strcat.c ft_strcpy.c ft_strdup.c ft_strlcat.c ft_strlen.c \
 	  ft_memfill.c ft_lstfree.c ft_swap.c ft_fact.c
 
 FLAG = -Wall -Wextra -Werror
-OPTION = -c -I libft.h
+OPTION = -c -I libft/libft.h
 OBJ = ft_strcat.o ft_strcpy.o ft_strdup.o ft_strlcat.o ft_strlen.o \
 	  ft_strncpy.o ft_tolower.o ft_toupper.o ft_isprint.o ft_isascii.o \
 	  ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_memset.o ft_bzero.o \
