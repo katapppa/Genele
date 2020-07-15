@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 22:53:25 by kirill            #+#    #+#             */
-/*   Updated: 2020/07/15 12:15:33 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/15 13:09:31 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,5 @@ int     ft_file(fdf *coords, char *file)
         i++;
     }
     close(fd);
-    printf("%d\n", coords->height);
-    printf("%d\n", coords->width);
     return 0;
 }

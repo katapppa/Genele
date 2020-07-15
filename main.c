@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:05:06 by kirill            #+#    #+#             */
-/*   Updated: 2020/07/15 12:34:06 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/15 13:07:50 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ int		main(int argc, char **argv)
 	// if (fd == 0)
 	// 	printf ("OSHIBKA");
 	ft_file(coords, argv[1]);
+	coords->zoom = 30;
 	coords->mlx_ptr = mlx_init();
 	coords->win_ptr = mlx_new_window(coords->mlx_ptr, 1000, 1000, "FDF");
-	ft_draw(10, 10, 600, 300, coords);
+	ft_create(coords);
 	mlx_key_hook(coords->win_ptr, deal_key, NULL);
 	mlx_loop(coords->mlx_ptr);
 	i = 0;
