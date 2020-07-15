@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kirill <kirill@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:05:06 by kirill            #+#    #+#             */
-/*   Updated: 2020/07/08 14:07:04 by kirill           ###   ########.fr       */
+/*   Updated: 2020/07/15 12:34:06 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		ft_fileopen();
+int     deal_key(int key, void *data)
+{
+	return 0;
+}
 
 int		main(int argc, char **argv)
 {
@@ -32,18 +35,19 @@ int		main(int argc, char **argv)
 	// if (fd == 0)
 	// 	printf ("OSHIBKA");
 	ft_file(coords, argv[1]);
-	while(i < coords->height)
-	{
-		j = 0;
-		while(j < coords->width)
-		{
-			printf("%d ", coords->box[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	coords->mlx_ptr = mlx_init();
+	coords->win_ptr = mlx_new_window(coords->mlx_ptr, 1000, 1000, "FDF");
+	ft_draw(10, 10, 600, 300, coords);
+	mlx_key_hook(coords->win_ptr, deal_key, NULL);
+	mlx_loop(coords->mlx_ptr);
 	i = 0;
+	// while (i <= coords->height)
+    // {
+	// 	ft_memdel((void **)&(coords->box[i]));
+    //     i++;
+    // }
+	// ft_memdel((void **)&(coords->box));
+	// ft_memdel((void **)&(coords));
 	while (i <= coords->height)
     {
 		free(coords->box[i]);
