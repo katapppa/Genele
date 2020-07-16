@@ -6,48 +6,69 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 12:13:51 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/15 13:51:47 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/16 16:55:18 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <math.h>
 
-void        ft_magic(float *x, float *y, int z)
+float	fmodule(float i)
 {
-    *x = (*x - *y) * cos(0.8); //proverit
-    *y = (*x + *y) * sin(0.8) - z;
+	return (i < 0) ? -i : i;
+}
+
+void        ft_magic(numbers *num)
+{
+    num->x = (num->x - num->y) * cos(0.7);
+    num->y = (num->x + num->y) * sin(0.7) - num->z;
+}
+
+void        ft_magica(numbers *num)
+{
+    num->x0 = (num->x0 - num->y0) * cos(0.7);
+    num->y0 = (num->x0 + num->y0) * sin(0.7) - num->z0;
 }
 
 void        ft_draw(float x, float y, float x0, float y0, fdf *coords)
 {
     float   xstp;
     float   ystp;
-    int     max;
-    int     z;
-    int     z0;
+    float     maxe;
+    //float     z;
+    //float     z0;
+    numbers *num;
 
-    z = coords->box[(int)y][(int)x];
-    z0 = coords->box[(int)y0][(int)x0];
+    num = (numbers*)malloc(sizeof(numbers));
+    num->z = coords->box[(int)y][(int)x];
+    num->z0 = coords->box[(int)y0][(int)x0];
     //zoom
-    x *= coords->zoom;
-    y *= coords->zoom;
-    x0 *= coords->zoom;
-    y0 *= coords->zoom;
+    num->x = x *= coords->zoom;
+    num->y = y *= coords->zoom;
+    num->x0 = x0 *= coords->zoom;
+    num->y0 = y0 *= coords->zoom;
     //color
-    coords->color = (z > 0) ? 0xe80c0c : 0xffffff;
+    coords->color = (num->z > 0 || num->z0 > 0) ? 0xe80c0c : 0xffffff;
     //3D
-    ft_magic(&x, &y, z);
-    ft_magic(&x0, &y0, z0);
-    xstp = x0 - x;
-    ystp = y0 - y;
-    max = (MOD(xstp) > MOD(ystp) ? xstp : ystp);
-    xstp /= max;
-    ystp /= max;
-    while ((int)(x - x0) || (int)(y - y0))
+    ft_magic(num);
+    ft_magica(num);
+    printf("X IS %f\n", num->x);
+    printf("Y IS %f\n", num->y);
+    printf("X0 IS %f\n", num->x0);
+    printf("Y0 IS %f\n", num->y0);
+    printf("Z IS %f\n", num->z);
+    printf("Z0 IS %f\n\n", num->z0);
+    xstp = num->x0 - num->x;
+    ystp = num->y0 - num->y;
+    maxe = ((MOD(xstp) > MOD(ystp)) ? MOD(xstp) : MOD(ystp));
+    printf("MAX IS %f\n",maxe);
+    xstp /= maxe;
+    ystp /= maxe;
+    while ((int)(num->x - num->x0) || (int)(num->y - num->y0))
     {
-        mlx_pixel_put(coords->mlx_ptr, coords->win_ptr, (int)x, (int)y, coords->color);
-        x += xstp;
-        y += ystp;
+        mlx_pixel_put(coords->mlx_ptr, coords->win_ptr, num->x, num->y, coords->color);
+        num->x += xstp;
+        num->y += ystp;
     }
 }
 
@@ -57,6 +78,8 @@ void        ft_create(fdf *coords)
     int x;
 
     y = 0;
+    printf("VYSOTA IS %d\n",coords->height);
+    printf("SHIROTA IS %d\n",coords->width);
     while (y < coords->height)
     {
         x = 0;

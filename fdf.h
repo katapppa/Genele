@@ -3,8 +3,7 @@
 
 #include "minilibx_macos/mlx.h"
 #include "get_next_line.h"
-#include <math.h>
-#define MOD(x) (x > 0 ? x : -x)
+#define MOD(x) (x < 0 ? -x : x)
 
 typedef struct
 {
@@ -17,6 +16,17 @@ typedef struct
     void    *mlx_ptr;
     void    *win_ptr;
 }       fdf;
+
+typedef struct 
+{
+    float x;
+    float y;
+    float x0;
+    float y0;
+    float z;
+    float z0;
+}       numbers;
+
 
 int     ft_file(fdf *coords, char *file);
 int     deal_key(int key, void *data);
