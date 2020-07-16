@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 12:13:51 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/16 16:55:18 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/16 18:07:48 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void        ft_draw(float x, float y, float x0, float y0, fdf *coords)
     numbers *num;
 
     num = (numbers*)malloc(sizeof(numbers));
-    num->z = coords->box[(int)y][(int)x];
-    num->z0 = coords->box[(int)y0][(int)x0];
+    num->z = ((coords->box[(int)y][(int)x]) != 0) ? ((coords->box[(int)y][(int)x]) + coords->ze) : ((coords->box[(int)y][(int)x]));
+    num->z0 = ((coords->box[(int)y0][(int)x0]) != 0) ? ((coords->box[(int)y0][(int)x0]) + coords->ze) : ((coords->box[(int)y0][(int)x0]));
     //zoom
     num->x = x *= coords->zoom;
     num->y = y *= coords->zoom;
@@ -52,16 +52,13 @@ void        ft_draw(float x, float y, float x0, float y0, fdf *coords)
     //3D
     ft_magic(num);
     ft_magica(num);
-    printf("X IS %f\n", num->x);
-    printf("Y IS %f\n", num->y);
-    printf("X0 IS %f\n", num->x0);
-    printf("Y0 IS %f\n", num->y0);
-    printf("Z IS %f\n", num->z);
-    printf("Z0 IS %f\n\n", num->z0);
+    num->x += coords->sdvigx;
+    num->x0 += coords->sdvigx;
+    num->y += coords->sdvigy;
+    num->y0 += coords->sdvigy;
     xstp = num->x0 - num->x;
     ystp = num->y0 - num->y;
     maxe = ((MOD(xstp) > MOD(ystp)) ? MOD(xstp) : MOD(ystp));
-    printf("MAX IS %f\n",maxe);
     xstp /= maxe;
     ystp /= maxe;
     while ((int)(num->x - num->x0) || (int)(num->y - num->y0))
@@ -78,8 +75,6 @@ void        ft_create(fdf *coords)
     int x;
 
     y = 0;
-    printf("VYSOTA IS %d\n",coords->height);
-    printf("SHIROTA IS %d\n",coords->width);
     while (y < coords->height)
     {
         x = 0;

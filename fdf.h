@@ -12,6 +12,9 @@ typedef struct
     int     **box;
     int     zoom;
     int     color;
+    int     sdvigx;
+    int     sdvigy;
+    int     ze;
 
     void    *mlx_ptr;
     void    *win_ptr;
@@ -29,7 +32,6 @@ typedef struct
 
 
 int     ft_file(fdf *coords, char *file);
-int     deal_key(int key, void *data);
 void    ft_draw(float x, float y, float x0, float y0, fdf *coords);
 void    ft_create(fdf *coords);
 
