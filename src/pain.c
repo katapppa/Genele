@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 12:13:51 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/18 14:27:19 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/18 16:21:20 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ void		ft_magica(t_numbers *num, t_fdf *coords)
 void		ft_idkhtn(t_numbers *num, t_fdf *coords)
 {
 	coords->color = (num->z > 0 || num->z0 > 0) ? 0xe80c0c : 0xffffff;
-	ft_magic(num,coords);
-	ft_magica(num,coords);
+	if (coords->dvad == 1)
+	{
+		ft_magic(num,coords);
+		ft_magica(num,coords);
+	}
 	num->x += coords->sdvigx;
 	num->x0 += coords->sdvigx;
 	num->y += coords->sdvigy;

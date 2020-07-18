@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:05:06 by kirill            #+#    #+#             */
-/*   Updated: 2020/07/18 15:32:58 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/18 16:28:11 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_init_struct(t_fdf *coords)
 {
+	coords->dvad = 1;
 	coords->a = 1000;
 	coords->b = 1000;
 	coords->angle = 0.7;
@@ -63,6 +64,39 @@ void	ft_print_menu(t_fdf *coords)
 	mlx_string_put(coords->mlx_ptr, coords->win_ptr, 10, 50, 0xEEEE69, line);
 	line = "UP/DOWN: 8 and 2";
 	mlx_string_put(coords->mlx_ptr, coords->win_ptr, 10, 70, 0xEEEE69, line);
+	line = "FULLSCREEN: f";
+	mlx_string_put(coords->mlx_ptr, coords->win_ptr, 10, 90, 0xEEEE69, line);
+	line = "2D/3D: 2";
+	mlx_string_put(coords->mlx_ptr, coords->win_ptr, 10, 110, 0xEEEE69, line);
+}
+
+void	ft_fullscreen(t_fdf *coords)
+{
+	if (coords->a == 2560 && coords->b == 1440)
+	{
+		coords->a = 1000;
+		coords->b = 1000;
+	}
+	else
+	{
+		coords->a = 2560;
+		coords->b = 1440;
+	}
+	mlx_destroy_window(coords->mlx_ptr, coords->win_ptr);
+	coords->mlx_ptr = mlx_init();
+	coords->win_ptr = mlx_new_window(coords->mlx_ptr, coords->a, coords->b, "FDF");
+	ft_create(coords);
+	ft_print_menu(coords);
+	mlx_key_hook(coords->win_ptr, deal_key, coords);
+	mlx_loop(coords->mlx_ptr);
+}
+
+void	ft_dvad(t_fdf *coords)
+{
+	if (coords->dvad == 0)
+		coords->dvad = 1;
+	else
+		coords->dvad = 0;	
 }
 
 int		deal_key(int key, t_fdf *coords)
@@ -93,12 +127,9 @@ int		deal_key(int key, t_fdf *coords)
 	if (key == 84)
 		coords->ze -= 1;
 	if (key == 3)
-		{
-			coords->a = 2560;
-			coords->b = 1440;
-			// mlx_destroy_window(coords->mlx_ptr, coords->win_ptr);
-			// coords->win_ptr = mlx_new_window(coords->mlx_ptr, coords->a, coords->b, "FDF");
-		}
+		ft_fullscreen(coords);
+	if (key == 19)
+		ft_dvad(coords);
 	mlx_clear_window(coords->mlx_ptr, coords->win_ptr);
 	ft_print_menu(coords);
 	ft_create(coords);

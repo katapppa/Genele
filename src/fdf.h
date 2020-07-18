@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:27:52 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/18 14:35:59 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/18 16:21:11 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef struct	s_fdf
 {
+	int			dvad;
 	int			a;
 	int			b;
 	int			height;
