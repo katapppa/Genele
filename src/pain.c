@@ -6,29 +6,41 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 12:13:51 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/17 14:02:36 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/18 14:27:19 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		ft_magic(t_numbers *num)
+float		ft_zet(t_fdf *coords, int x , int y)
 {
-	num->x = (num->x - num->y) * cos(0.7);
-	num->y = (num->x + num->y) * sin(0.7) - num->z;
+	float z;
+
+	z = coords->box[y][x];
+	if (z != 0)
+		z += coords->ze;
+	// if (z < 0)
+	// 	z -= coords->ze;
+	return (z);
 }
 
-void		ft_magica(t_numbers *num)
+void		ft_magic(t_numbers *num, t_fdf *coords)
 {
-	num->x0 = (num->x0 - num->y0) * cos(0.7);
-	num->y0 = (num->x0 + num->y0) * sin(0.7) - num->z0;
+	num->x = (num->x - num->y) * cos(coords->angle);
+	num->y = (num->x + num->y) * sin(coords->angle) - num->z;
+}
+
+void		ft_magica(t_numbers *num, t_fdf *coords)
+{
+	num->x0 = (num->x0 - num->y0) * cos(coords->angle);
+	num->y0 = (num->x0 + num->y0) * sin(coords->angle) - num->z0;
 }
 
 void		ft_idkhtn(t_numbers *num, t_fdf *coords)
 {
 	coords->color = (num->z > 0 || num->z0 > 0) ? 0xe80c0c : 0xffffff;
-	ft_magic(num);
-	ft_magica(num);
+	ft_magic(num,coords);
+	ft_magica(num,coords);
 	num->x += coords->sdvigx;
 	num->x0 += coords->sdvigx;
 	num->y += coords->sdvigy;
@@ -41,8 +53,8 @@ void		ft_draw(t_numbers *num, t_fdf *coords)
 	float	ystp;
 	float	max;
 
-	num->z = coords->box[(int)num->y][(int)num->x];
-	num->z0 = coords->box[(int)num->y0][(int)num->x0];
+	num->z = ft_zet(coords, (int)num->x, (int)num->y);//coords->box[(int)num->y][(int)num->x];
+	num->z0 = ft_zet(coords, (int)num->x0, (int)num->y0);//coords->box[(int)num->y0][(int)num->x0];
 	num->x *= coords->zoom;
 	num->y *= coords->zoom;
 	num->x0 *= coords->zoom;

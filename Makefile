@@ -6,12 +6,12 @@
 #    By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/17 13:42:52 by cgamora           #+#    #+#              #
-#    Updated: 2020/07/17 13:45:00 by cgamora          ###   ########.fr        #
+#    Updated: 2020/07/17 14:30:48 by cgamora          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FRAEMWORKS = -framework OpenGL -framework AppKit
-FLAGS = -Werror -Wextra -Wall
+FLAGS = -g -Werror -Wextra -Wall
 NAME = fdf
 SRC = src/*.c
 INCLUDES = libft/libft.a minilibx_macos/libmlx.a

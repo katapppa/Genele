@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:27:52 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/17 14:06:35 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/18 14:35:59 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 typedef struct	s_fdf
 {
+	int			a;
+	int			b;
 	int			height;
 	int			width;
 	int			**box;
@@ -27,6 +29,7 @@ typedef struct	s_fdf
 	int			color;
 	int			sdvigx;
 	int			sdvigy;
+	float		angle;
 	int			ze;
 	void		*mlx_ptr;
 	void		*win_ptr;
