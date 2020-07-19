@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:27:52 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/19 16:36:29 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/19 18:46:25 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct	s_numbers
 	float		y0end;
 	int			startcolor;
 	int			endcolor;
+	float		xstp;
+	float		ystp;
 }				t_numbers;
 
 // typedef struct	s_point
@@ -66,5 +68,8 @@ void			ft_draw(t_numbers *num, t_fdf *coords);
 void			ft_create(t_fdf *coords);
 t_numbers		*ft_createy(t_numbers *num, int x, int y);
 t_numbers		*ft_createx(t_numbers *num, int x, int y);
+double			ft_percent(int start, int end, int current);
+int				get_color(t_fdf *coords, t_numbers *num);
+double			ft_percenta(int start, int end, int current);
 
 #endif

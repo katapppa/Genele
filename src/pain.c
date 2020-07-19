@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 12:13:51 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/19 16:39:37 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/19 19:28:40 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,21 @@ void		ft_draw(t_numbers *num, t_fdf *coords)
 	max = ((MOD(xstp) > MOD(ystp)) ? MOD(xstp) : MOD(ystp));
 	xstp /= max;
 	ystp /= max;
+	num->xstp = xstp;
+	num->ystp = ystp;
 	num->xstart = num->x;
 	num->ystart = num->y;
 	num->x0end = num->x0;
 	num->y0end = num->y0;
+	num->endcolor = 0xF79833; 
+	num->startcolor = 0xFF0000;//0xCE35CE;
+	coords->color = 0xCE35CE;
+	printf("XSTP IS %f\n", xstp);
+	printf("YSTP IS %f\n\n", ystp);
 	while ((int)(num->x - num->x0) || (int)(num->y - num->y0))
 	{
 		mlx_pixel_put(coords->mlx_ptr, coords->win_ptr,
-			num->x, num->y, get_color(coords, num));//coords->color -= 0xfff);
+			num->x, num->y, coords->color = get_color(coords, num));//coords->color -= 0xfff);
 		num->x += xstp;
 		num->y += ystp;
 	}
