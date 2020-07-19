@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:27:52 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/18 16:21:11 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/19 16:36:29 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,21 @@ typedef struct	s_numbers
 	float		y0;
 	float		z;
 	float		z0;
+	float		xstart;
+	float		x0end;
+	float		ystart;
+	float		y0end;
+	int			startcolor;
+	int			endcolor;
 }				t_numbers;
+
+// typedef struct	s_point
+// {
+// 	int			x;
+// 	int			y;
+// 	int			z;
+// 	int			color;
+// }				t_point;
 
 int				deal_key(int key, t_fdf *coords);
 int				ft_file(t_fdf *coords, char *file);

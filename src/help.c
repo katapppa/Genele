@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 13:40:24 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/17 13:59:30 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/19 16:16:18 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,14 @@ t_numbers		*ft_createx(t_numbers *num, int x, int y)
 	num->y = y;
 	num->y0 = y;
 	return (num);
+}
+
+double			ft_percent(int start, int end, int current)
+{
+	double placement;
+	double distance;
+
+	placement = current - start;
+	distance = end - start;
+	return ((distance == 0) ? 1.0 : (placement / distance));
 }
