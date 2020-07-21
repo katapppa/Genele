@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:05:06 by kirill            #+#    #+#             */
-/*   Updated: 2020/07/21 18:06:36 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/21 18:42:14 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,11 @@ int		main(int argc, char **argv)
 
 	if (argc == 1 || argc > 2)
 	{
-		printf("ERROR\n");
+		write(1, "ERROR\n", 6);
 		return (0);
 	}
-	coords = (t_fdf*)malloc(sizeof(t_fdf));
+	if (!(coords = (t_fdf*)malloc(sizeof(t_fdf))))
+		return (0);
 	i = 0;
 	ft_file(coords, argv[1]);
 	ft_init_struct(coords);
