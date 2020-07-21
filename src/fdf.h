@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:27:52 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/21 17:27:15 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/21 18:07:49 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,9 @@ void			ft_dvad(t_fdf *coords);
 void			ft_helper(t_numbers *num);
 int				ft_colorizerr(t_numbers *num);
 int				ft_colorizer(t_numbers *num);
+void			ft_anglele(int key, t_fdf *coords);
+void			ft_zoomzoom(int key, t_fdf *coords);
+void			ft_zeze(int key, t_fdf *coords);
+int				get_light(int start, int end, double percentage);
 
 #endif

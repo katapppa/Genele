@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:05:06 by kirill            #+#    #+#             */
-/*   Updated: 2020/07/21 15:50:03 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/21 18:06:36 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,14 @@ int		deal_key(int key, t_fdf *coords)
 		coords->sdvigx -= 10;
 	if (key == 126 || key == 13)
 		coords->sdvigy -= 10;
-	if (key == 69)
-		coords->zoom += 5;
-	if (key == 78)
-		coords->zoom -= 5;
-	if (key == 23)
-		coords->angle -= 0.1;
-	if (key == 22)
-		coords->angle += 0.1;
+	if (key == 69 || key == 78)
+		ft_zoomzoom(key, coords);
+	if (key == 23 || key == 22)
+		ft_anglele(key, coords);
 	if (key == 53)
 		ft_exit(coords);
-	if (key == 91)
-		coords->ze += 1;
-	if (key == 84)
-		coords->ze -= 1;
+	if (key == 91 || key == 84)
+		ft_zeze(key, coords);
 	if (key == 3)
 		ft_fullscreen(coords);
 	if (key == 19)

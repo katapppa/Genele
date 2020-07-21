@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 17:16:12 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/21 17:27:28 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/21 17:58:41 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,12 @@ int				ft_colorizerr(t_numbers *num)
 	green = get_light((num->ec >> 8) & 0xFF, (num->sc >> 8) & 0xFF, percentage);
 	blue = get_light(num->ec & 0xFF, num->sc & 0xFF, percentage);
 	return ((red << 16) | (green << 8) | blue);
+}
+
+void			ft_zoomzoom(int key, t_fdf *coords)
+{
+	if (key == 69)
+		coords->zoom += 5;
+	if (key == 78)
+		coords->zoom -= 5;
 }
