@@ -1,14 +1,10 @@
 #define MOD(x) (x < 0 ? -x : x)
 #include <stdio.h>
+#include "fdf.h"
 
 int     main()
 {
-    int a;
-
-    a = 0xffffff;
-       printf("%d\n",a);
-    a = a << 1;
-    printf("%d\n",a);
+    mlx_init();
     return 0;
 }
 

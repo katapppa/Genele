@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:05:06 by kirill            #+#    #+#             */
-/*   Updated: 2020/07/21 18:42:14 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/22 16:12:25 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_struct(t_fdf *coords)
 void	ft_exit(t_fdf *coords)
 {
 	free_struct(coords);
-	exit(0);
+	exit(1);
 }
 
 void	ft_fullscreen(t_fdf *coords)
@@ -84,17 +84,21 @@ int		deal_key(int key, t_fdf *coords)
 
 int		main(int argc, char **argv)
 {
-	int		i;
 	t_fdf	*coords;
 
 	if (argc == 1 || argc > 2)
 	{
-		write(1, "ERROR\n", 6);
+		write(1, "Usage: ./fdf map.fdf\n", 21);
 		return (0);
 	}
 	if (!(coords = (t_fdf*)malloc(sizeof(t_fdf))))
 		return (0);
-	i = 0;
+	if (!(ft_isfdf(argv[1])))
+	{
+		perror("ERROR");
+		free(coords);
+		exit(1);
+	}
 	ft_file(coords, argv[1]);
 	ft_init_struct(coords);
 	ft_print_menu(coords);

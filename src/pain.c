@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 12:13:51 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/21 17:15:21 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/22 15:57:07 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void		ft_create(t_fdf *coords)
 	int			x;
 	t_numbers	*num;
 
-	num = (t_numbers*)malloc(sizeof(t_numbers));
+	if (!(num = (t_numbers*)malloc(sizeof(t_numbers))))
+		ft_exit(coords);
 	y = 0;
 	while (y < coords->height)
 	{

@@ -6,7 +6,7 @@
 /*   By: cgamora <cgamora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:27:52 by cgamora           #+#    #+#             */
-/*   Updated: 2020/07/21 18:40:55 by cgamora          ###   ########.fr       */
+/*   Updated: 2020/07/22 16:10:34 by cgamora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,8 @@ void			ft_zoomzoom(int key, t_fdf *coords);
 void			ft_zeze(int key, t_fdf *coords);
 int				get_light(int start, int end, double percentage);
 void			ft_exit(t_fdf *coords);
+int				ft_isfdf(char *line);
+void			ft_perror(t_fdf *coords);
+void			ft_perror1(t_fdf *coords, int i);
 
 #endif
